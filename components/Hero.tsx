@@ -8,6 +8,7 @@ import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import SearchIcon from '@mui/icons-material/Search';
 
 import { visuallyHidden } from "@mui/utils";
 import { styled } from "@mui/material/styles";
@@ -87,34 +88,41 @@ export default function Hero() {
         }}
       >
         <Stack
-          spacing={2}
+          spacing={1}
           useFlexGap
           sx={{ alignItems: "center", width: { xs: "100%", sm: "90%" } }}
         >
           <Typography
             variant="h1"
             sx={{
-              display: "flex",
-              flexDirection: { xs: "column", sm: "row" },
-              alignItems: "center",
+              // display: "flex",
+              // flexDirection: { xs: "column", sm: "row" },
+              // alignItems: "center",
+              textAlign: "center",
               fontSize: "clamp(3rem, 10vw, 3.5rem)",
             }}
           >
-            Find&nbsp;Your&nbsp;
+            Find Your Next&nbsp;
+          </Typography>  
+          
             <Typography
               component="span"
               variant="h1"
               sx={(theme) => ({
-                fontSize: "inherit",
+                textAlign: "center",
+              fontSize: "clamp(3rem, 10vw, 3.5rem)",
+                // fontSize: "inherit",
                 color: "primary.main",
                 ...theme.applyStyles("dark", {
                   color: "primary.light",
                 }),
               })}
             >
-              Hobby
+              
+              Favourite Events&nbsp;
             </Typography>
-          </Typography>
+            
+          
           <Typography
             sx={{
               textAlign: "center",
@@ -122,9 +130,7 @@ export default function Hero() {
               width: { sm: "100%", md: "80%" },
             }}
           >
-            Explore our cutting-edge dashboard, delivering high-quality
-            solutions tailored to your needs. Elevate your experience with
-            top-tier features and services.
+            Your real-time events search starts here.
           </Typography>
           <Stack
             direction={{ xs: "column", sm: "row" }}
@@ -134,7 +140,7 @@ export default function Hero() {
             sx={{ pt: 2, width: { xs: "100%" } }}
           >
             <InputLabel htmlFor="email-hero" sx={visuallyHidden}>
-              Email
+              Event variable
             </InputLabel>
             <PrimarySearchInput
               id="event-her"
@@ -145,19 +151,22 @@ export default function Hero() {
                 input: {
                   endAdornment: (
                     <InputAdornment position="end">
-                      <Divider
+                      {/* <Divider
                         orientation="vertical"
                         sx={{ borderColor: "secondary.main" }}
                         flexItem
-                      />
+                      /> */}
                       <Button
+                      variant="contained"
                         color="primary"
                         sx={{
                           minWidth: "fit-content",
                           borderRadius: 30,
                         }}
                       >
-                        Search
+                        
+                        <SearchIcon/>
+
                       </Button>
                     </InputAdornment>
                   ),
