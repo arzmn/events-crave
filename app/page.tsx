@@ -1,11 +1,12 @@
-import AppAppBar from "@/components/Appbar/Appbar";
-import Hero from "@/components/Hero/Hero";
+import AppAppBar from "@/components/AppAppBar";
+import Hero from "@/components/Hero";
+import { Box } from "@mui/material";
 
 export default function Home() {
   return (
-    <div className="">
+    <Box className="">
       <AppAppBar />
       <Hero />
-    </div>
+    </Box>
   );
 }

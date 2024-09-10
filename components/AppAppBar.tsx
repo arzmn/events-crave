@@ -10,8 +10,9 @@ import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
 import MenuItem from "@mui/material/MenuItem";
 import Drawer from "@mui/material/Drawer";
-// import MenuIcon from "@mui/icons-material/Menu";
-// import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import Sitemark from "./SitemarkIcon";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -49,6 +50,7 @@ export default function AppAppBar() {
           <Box
             sx={{ flexGrow: 1, display: "flex", alignItems: "center", px: 0 }}
           >
+            <Sitemark />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <Button variant="text" color="info" size="small">
                 Features
@@ -96,7 +98,7 @@ export default function AppAppBar() {
           </Box>
           <Box sx={{ display: { sm: "flex", md: "none" } }}>
             <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
-              {/* <MenuIcon /> */}
+              <MenuIcon />
             </IconButton>
             <Drawer anchor="top" open={open} onClose={toggleDrawer(false)}>
               <Box sx={{ p: 2, backgroundColor: "background.default" }}>
@@ -108,7 +110,7 @@ export default function AppAppBar() {
                   }}
                 >
                   <IconButton onClick={toggleDrawer(false)}>
-                    {/* <CloseRoundedIcon /> */}
+                    <CloseRoundedIcon />
                   </IconButton>
                 </Box>
                 <Divider sx={{ my: 3 }} />
