@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 
 import { visuallyHidden } from "@mui/utils";
 import { styled } from "@mui/material/styles";
+import { Divider, InputAdornment } from "@mui/material";
 
 const StyledBox = styled("div")(({ theme }) => ({
   alignSelf: "center",
@@ -23,7 +24,7 @@ const StyledBox = styled("div")(({ theme }) => ({
   border: "1px solid",
   borderColor: theme.palette.grey[200],
   boxShadow: "0 0 12px 8px hsla(220, 25%, 80%, 0.2)",
-  backgroundImage: `url(${"/static/screenshots/material-ui/getting-started/templates/dashboard.jpg"})`,
+  backgroundImage: `url(https://loremflickr.com/1920/1080?random=1)`,
   backgroundSize: "cover",
   [theme.breakpoints.up("sm")]: {
     marginTop: theme.spacing(10),
@@ -31,12 +32,35 @@ const StyledBox = styled("div")(({ theme }) => ({
   },
   ...theme.applyStyles("dark", {
     boxShadow: "0 0 24px 12px hsla(210, 100%, 25%, 0.2)",
-    backgroundImage: `url(${"/static/screenshots/material-ui/getting-started/templates/dashboard-dark.jpg"})`,
+    backgroundImage: `url(https://loremflickr.com/1920/1080?random=1)`,
     outlineColor: "hsla(220, 20%, 42%, 0.1)",
     borderColor: theme.palette.grey[700],
   }),
 }));
+const PrimarySearchInput = styled(TextField)(({ theme }) => ({
+  "& .MuiInputBase-root": {
+    borderRadius: 26,
+    fontSize: 18,
+    width: "100%",
+    border: "2px solid",
+    borderColor: theme.palette.primary.main,
+    padding: "26px 16px",
+    boxShadow: `0 0 4px ${theme.palette.primary.main}`,
 
+    transition: theme.transitions.create([
+      "border-color",
+      "background-color",
+      "box-shadow",
+    ]),
+    "&.Mui-focused": {
+      boxShadow: `0 0 10px ${theme.palette.primary.main}`, // Example: add a shadow on focus
+      outline: "0px",
+    },
+    // Use the system font instead of the default Roboto font.
+
+    "&:focus": {},
+  },
+}));
 export default function Hero() {
   return (
     <Box
@@ -65,7 +89,7 @@ export default function Hero() {
         <Stack
           spacing={2}
           useFlexGap
-          sx={{ alignItems: "center", width: { xs: "100%", sm: "70%" } }}
+          sx={{ alignItems: "center", width: { xs: "100%", sm: "90%" } }}
         >
           <Typography
             variant="h1"
@@ -76,7 +100,7 @@ export default function Hero() {
               fontSize: "clamp(3rem, 10vw, 3.5rem)",
             }}
           >
-            Our&nbsp;latest&nbsp;
+            Find&nbsp;Your&nbsp;
             <Typography
               component="span"
               variant="h1"
@@ -88,7 +112,7 @@ export default function Hero() {
                 }),
               })}
             >
-              products
+              Hobby
             </Typography>
           </Typography>
           <Typography
@@ -105,42 +129,48 @@ export default function Hero() {
           <Stack
             direction={{ xs: "column", sm: "row" }}
             spacing={1}
+            alignItems={"center"}
             useFlexGap
-            sx={{ pt: 2, width: { xs: "100%", sm: "350px" } }}
+            sx={{ pt: 2, width: { xs: "100%" } }}
           >
             <InputLabel htmlFor="email-hero" sx={visuallyHidden}>
               Email
             </InputLabel>
-            <TextField
-              id="email-hero"
-              hiddenLabel
-              size="small"
-              variant="outlined"
-              aria-label="Enter your email address"
-              placeholder="Your email address"
+            <PrimarySearchInput
+              id="event-her"
+              aria-label="Search you event here"
+              placeholder="Search you event here"
               fullWidth
               slotProps={{
-                htmlInput: {
-                  autoComplete: "off",
-                  "aria-label": "Enter your email address",
+                input: {
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <Divider
+                        orientation="vertical"
+                        sx={{ borderColor: "secondary.main" }}
+                        flexItem
+                      />
+                      <Button
+                        color="primary"
+                        sx={{
+                          minWidth: "fit-content",
+                          borderRadius: 30,
+                        }}
+                      >
+                        Search
+                      </Button>
+                    </InputAdornment>
+                  ),
                 },
               }}
             />
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              sx={{ minWidth: "fit-content" }}
-            >
-              Start now
-            </Button>
           </Stack>
           <Typography
             variant="caption"
             color="text.secondary"
             sx={{ textAlign: "center" }}
           >
-            By clicking &quot;Start now&quot; you agree to our&nbsp;
+            By clicking &quot;Search&quot; you agree to our&nbsp;
             <Link href="#" color="primary">
               Terms & Conditions
             </Link>
