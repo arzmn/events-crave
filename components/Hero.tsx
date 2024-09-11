@@ -45,7 +45,6 @@ export default function Hero() {
       sx={(theme) => ({
         width: "100%",
         backgroundRepeat: "no-repeat",
-
         backgroundImage:
           "radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 90%), transparent)",
         ...theme.applyStyles("dark", {
@@ -71,9 +70,6 @@ export default function Hero() {
           <Typography
             variant="h1"
             sx={{
-              // display: "flex",
-              // flexDirection: { xs: "column", sm: "row" },
-              // alignItems: "center",
               textAlign: "center",
               fontSize: "clamp(3rem, 10vw, 3.5rem)",
             }}
@@ -125,11 +121,6 @@ export default function Hero() {
                 input: {
                   endAdornment: (
                     <InputAdornment position="end">
-                      {/* <Divider
-                        orientation="vertical"
-                        sx={{ borderColor: "secondary.main" }}
-                        flexItem
-                      /> */}
                       <Button
                         variant="contained"
                         color="primary"
@@ -158,7 +149,6 @@ export default function Hero() {
             .
           </Typography>
         </Stack>
-        {/* <StyledBox id="image" /> */}
       </Container>
     </Box>
   );

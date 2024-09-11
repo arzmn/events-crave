@@ -7,6 +7,7 @@ import {
   feedbackCustomizations,
   navigationCustomizations,
   surfacesCustomizations,
+  layoutCustomizations,
 } from "./customizations";
 
 export default function getMPTheme(mode: PaletteMode): ThemeOptions {
@@ -18,6 +19,7 @@ export default function getMPTheme(mode: PaletteMode): ThemeOptions {
       ...feedbackCustomizations,
       ...navigationCustomizations,
       ...surfacesCustomizations,
+      ...layoutCustomizations,
     },
   };
 }
