@@ -126,14 +126,18 @@ export default function Navbar() {
                 <MenuItem>FAQ</MenuItem>
                 <MenuItem>Blog</MenuItem>
                 <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth>
-                    Sign up
-                  </Button>
+                  <Link href={"/auth/sign-up"} style={{ width: "100%" }}>
+                    <Button color="primary" variant="contained" fullWidth>
+                      Sign up
+                    </Button>
+                  </Link>
                 </MenuItem>
                 <MenuItem>
-                  <Button color="primary" variant="outlined" fullWidth>
-                    Sign in
-                  </Button>
+                  <Link href={"/auth/sign-in"} style={{ width: "100%" }}>
+                    <Button color="primary" variant="outlined" fullWidth>
+                      Sign in
+                    </Button>
+                  </Link>
                 </MenuItem>
               </Box>
             </Drawer>
