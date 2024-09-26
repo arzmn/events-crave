@@ -13,6 +13,7 @@ import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Sitemark from "./SitemarkIcon";
+import Link from "next/link";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -89,12 +90,16 @@ export default function Navbar() {
               alignItems: "center",
             }}
           >
-            <Button color="primary" variant="text" size="small">
-              Sign in
-            </Button>
-            <Button color="primary" variant="contained" size="small">
-              Sign up
-            </Button>
+            <Link href={"/auth/sign-in"}>
+              <Button color="primary" variant="text" size="small">
+                Sign in
+              </Button>
+            </Link>
+            <Link href={"/auth/sign-up"}>
+              <Button color="primary" variant="contained" size="small">
+                Sign up
+              </Button>
+            </Link>
           </Box>
           <Box sx={{ display: { sm: "flex", md: "none" } }}>
             <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
@@ -121,14 +126,18 @@ export default function Navbar() {
                 <MenuItem>FAQ</MenuItem>
                 <MenuItem>Blog</MenuItem>
                 <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth>
-                    Sign up
-                  </Button>
+                  <Link href={"/auth/sign-up"} style={{ width: "100%" }}>
+                    <Button color="primary" variant="contained" fullWidth>
+                      Sign up
+                    </Button>
+                  </Link>
                 </MenuItem>
                 <MenuItem>
-                  <Button color="primary" variant="outlined" fullWidth>
-                    Sign in
-                  </Button>
+                  <Link href={"/auth/sign-in"} style={{ width: "100%" }}>
+                    <Button color="primary" variant="outlined" fullWidth>
+                      Sign in
+                    </Button>
+                  </Link>
                 </MenuItem>
               </Box>
             </Drawer>

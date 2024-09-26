@@ -25,8 +25,8 @@ export default function EventCard({
   thumbnail,
 }: EventCardType) {
   return (
-    <Paper elevation={2} sx={{ maxWidth: 445 }}>
-      <Card>
+    <Paper elevation={2} sx={{ maxWidth: 445, height: "100%" }}>
+      <Card sx={{ height: "100%" }}>
         <CardMedia
           sx={{ height: 160, objectFit: "cover" }}
           image={thumbnail ? thumbnail : "https://picsum.photos/480/720"}
