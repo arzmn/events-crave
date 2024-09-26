@@ -13,6 +13,7 @@ import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Sitemark from "./SitemarkIcon";
+import Link from "next/link";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -89,12 +90,16 @@ export default function Navbar() {
               alignItems: "center",
             }}
           >
-            <Button color="primary" variant="text" size="small">
-              Sign in
-            </Button>
-            <Button color="primary" variant="contained" size="small">
-              Sign up
-            </Button>
+            <Link href={"/auth/sign-in"}>
+              <Button color="primary" variant="text" size="small">
+                Sign in
+              </Button>
+            </Link>
+            <Link href={"/auth/sign-up"}>
+              <Button color="primary" variant="contained" size="small">
+                Sign up
+              </Button>
+            </Link>
           </Box>
           <Box sx={{ display: { sm: "flex", md: "none" } }}>
             <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
