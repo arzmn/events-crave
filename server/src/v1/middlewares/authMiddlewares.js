@@ -1,4 +1,4 @@
-import admin from "../firbase/firebaseConfig";
+import admin from "../../../firbase/firebaseConfig";
 
 
 
