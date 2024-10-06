@@ -29,8 +29,9 @@ const EventContainer = () => {
     >
       <Grid container spacing={2}>
         {JSON_DATA.data.map((v, index) => {
-          const { name, start_time_utc, tags, thumbnail } = v;
+          const { name, start_time_utc, tags, thumbnail  } = v;
           const { city } = v.venue;
+         
 
           return (
             <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={index}>

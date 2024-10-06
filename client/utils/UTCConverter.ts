@@ -8,27 +8,27 @@ export default function convertUTCToIST(utcTime: string): string {
 
   // Array to get day and month names
   const days: string[] = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
   ];
   const months: string[] = [
-    "January",
-    "February",
-    "March",
-    "April",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
     "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   // Get the components of the date
@@ -37,6 +37,16 @@ export default function convertUTCToIST(utcTime: string): string {
   const day: number = istDate.getDate();
   const year: number = istDate.getFullYear();
 
+  // Get hours and minutes
+  let hours: number = istDate.getHours();
+  const minutes: number = istDate.getMinutes();
+
+  // Format hours for AM/PM
+  const ampm: string = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  const formattedMinutes: string = minutes < 10 ? '0' + minutes : minutes.toString();
+
   // Return the formatted date in "Day, Month Date, Year" format
-  return `${dayName}, ${monthName} ${day}, ${year}`;
+  return `${dayName}, ${monthName} ${day}, ${year}, ${hours}:${formattedMinutes} ${ampm}`;
 }
