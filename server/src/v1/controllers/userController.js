@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "fireb
 import { apiError } from "../../utils/apiError.js"
 import { apiResponse } from "../../utils/apiResponse.js"
 import  auth from "../../firebase/firebaseConfigAuth.js"
-
+import jwt from "jsonwebtoken"
 
 export const getLoggedInUser=async(req,res)=>{
     try {
@@ -24,6 +24,7 @@ export const getLoggedInUser=async(req,res)=>{
             const userCredential=await createUserWithEmailAndPassword(auth,email,password)   
             return res.status(200).json(new apiResponse(200,userCredential ,"user registered successfully"))   
         } catch (error) {
+            console.log(error)
             throw new apiError(404, "unable to create User")
         }
     }
@@ -50,4 +51,16 @@ export const loginUsingEmailAndPassword=async(req,res)=>{
     }
 }
 
+
+export const generateAccessToken=async(user)=>{
+    return jwt.sign(
+        {
+            user
+        },
+        process.env.ACCESS_TOKEN_SECRET,
+        {
+            expiresIn:process.env.ACCESS_TOKEN_EXPIRY
+        }
+    )
+}
 
