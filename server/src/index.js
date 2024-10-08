@@ -1,12 +1,13 @@
 // server
 
 import dotenv from 'dotenv';
+dotenv.config({
+    path:'../.env'
+});
 // import connectDB from './src/db/ConnectDB.js';
 import { app } from './app.js';
 
-dotenv.config({
-    path:'./.env'
-});
+
 
 // console.log(process.env.PRINT)
 

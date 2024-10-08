@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth"
-import { apiError } from "../../utils/apiError"
-import { apiResponse } from "../../utils/apiResponse"
-import { auth } from "../../firebase/firebaseConfigAuth"
+import { apiError } from "../../utils/apiError.js"
+import { apiResponse } from "../../utils/apiResponse.js"
+import  auth from "../../firebase/firebaseConfigAuth.js"
 
 
 export const getLoggedInUser=async(req,res)=>{
