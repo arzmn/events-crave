@@ -13,6 +13,7 @@ export const getLoggedInUser=async(req,res)=>{
 }
 
 
+
     export const signUpUsingEmailAndPassword=async(req,res)=>{
         try {
 
@@ -22,7 +23,19 @@ export const getLoggedInUser=async(req,res)=>{
 
             }
             const userCredential=await createUserWithEmailAndPassword(auth,email,password)   
-            return res.status(200).json(new apiResponse(200,userCredential ,"user registered successfully"))   
+            const user={
+                id:userCredential.user.uid,
+                email:userCredential.user.email
+
+            }
+            const token=generateAccessToken(user)
+            const option={
+                httpOnly:true,
+                secure:true
+            }
+            return res
+            .cookie("jwt", token , option)
+            .status(200).json(new apiResponse(200,user,"user registered successfully"))   
         } catch (error) {
             console.log(error)
             throw new apiError(404, "unable to create User")
@@ -37,22 +50,26 @@ export const loginUsingEmailAndPassword=async(req,res)=>{
         }
         const userCredential=await signInWithEmailAndPassword(auth,email,password)
         
-        const options={
+        const user={
+            id:userCredential.user.uid,
+            email:userCredential.user.email
+
+        }
+        const token=generateAccessToken(user)
+        const option={
             httpOnly:true,
             secure:true
         }
         return res
-        .status(200)
-        .cookie("accessToken",userCredential._tokenResponse.idToken,options)
-        .cookie("refreshToken",userCredential._tokenResponse.refreshToken,options)
-        .json(new apiResponse(200,userCredential,"user created successfully"));
+        .cookie("jwt", token , option)
+        .status(200).json(new apiResponse(200,user,"user registered successfully")) 
     } catch (error) {
         throw new apiError(500,"unable to login User")
     }
 }
 
 
-export const generateAccessToken=async(user)=>{
+export const generateAccessToken=(user)=>{
     return jwt.sign(
         {
             user
