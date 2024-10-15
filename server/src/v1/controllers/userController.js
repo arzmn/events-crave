@@ -3,6 +3,7 @@ import { apiError } from "../../utils/apiError.js"
 import { apiResponse } from "../../utils/apiResponse.js"
 import  auth from "../../firebase/firebaseConfigAuth.js"
 import jwt from "jsonwebtoken"
+import { encrypt } from "../../utils/Aes.js"
 
 export const getLoggedInUser=async(req,res)=>{
     try {
@@ -22,9 +23,10 @@ export const getLoggedInUser=async(req,res)=>{
                 throw new apiError(404,"all fields are required");
 
             }
-            const userCredential=await createUserWithEmailAndPassword(auth,email,password)   
+            const userCredential=await createUserWithEmailAndPassword(auth,email,password)  
+            const id=encrypt(userCredential.user.uid) 
             const user={
-                id:userCredential.user.uid,
+                id:id,
                 email:userCredential.user.email
 
             }
