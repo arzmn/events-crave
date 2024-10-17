@@ -15,7 +15,7 @@ app.use(cookieParser())
 app.use(express.urlencoded({extended:'true',limit:"16kb"}))
 console.log(process.env.PRINT)
 import userRouter from "./v1/routes/Auth.js"
-
+import eventRouter from "./v1/routes/Events.js"
 
 app.use("/api/v1/auth", userRouter)
 

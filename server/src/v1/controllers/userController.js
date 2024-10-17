@@ -7,7 +7,7 @@ import { encrypt } from "../../utils/Aes.js"
 
 export const getLoggedInUser=async(req,res)=>{
     try {
-        return res.status(200).json(new apiResponse(200,user,"user fetched successfully"))
+        return res.status(200).json(new apiResponse(200,req.user,"user fetched successfully"))
     } catch (error) {
         throw new apiError(500,"unable to fetch user details")
     }
