@@ -35,6 +35,7 @@ export const getLoggedInUser=async(req,res)=>{
                 httpOnly:true,
                 secure:true
             }
+        
             return res
             .cookie("jwt", token , option)
             .status(200).json(new apiResponse(200,user,"user registered successfully"))   
@@ -83,3 +84,21 @@ export const generateAccessToken=(user)=>{
     )
 }
 
+export const logoutUser=async()=> {
+    try {
+      await firebase.auth().signOut();
+      console.log("User logged out successfully.");
+      const options={
+        httpOnly:true,
+        secure:true
+
+      }
+      return res.
+      status(200)
+      .clearCookie("jwt",options)
+      .json(new apiResponse(200,{},"user logged out successfully"))
+    } catch (error) {
+      console.error("Error logging out: ", error);
+    }
+  }
+  
